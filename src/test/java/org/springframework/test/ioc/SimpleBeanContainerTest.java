@@ -1,6 +1,7 @@
 package org.springframework.test.ioc;
 
 import org.junit.Test;
+import org.springframework.beans.factory.PropertyValues;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 
@@ -15,7 +16,8 @@ public class SimpleBeanContainerTest {
     @Test
     public void testGetBean() throws Exception {
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
-        beanFactory.registryBeanDefinition("helloService", new BeanDefinition(HelloService.class));
+        beanFactory.registryBeanDefinition("helloService",
+            new BeanDefinition(HelloService.class, new PropertyValues()));
         HelloService helloService = (HelloService)beanFactory.getBean("helloService");
         assertThat(helloService).isNotNull();
         assertThat(helloService.sayHello()).isEqualTo("hello");

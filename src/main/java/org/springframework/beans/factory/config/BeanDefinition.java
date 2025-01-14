@@ -1,6 +1,7 @@
 package org.springframework.beans.factory.config;
 
-import java.util.List;
+import org.springframework.beans.factory.PropertyValues;
+
 
 /**
  * @Author : xuaoping
@@ -10,11 +11,18 @@ public class BeanDefinition {
 
     private Class<?> beanClass;
 
-    public BeanDefinition(Class<?> beanClass) {
+    private PropertyValues propertyValues;
+
+    public BeanDefinition(Class<?> beanClass, PropertyValues propertyValues) {
         this.beanClass = beanClass;
+        this.propertyValues = propertyValues;
     }
 
     public Class<?> getBeanClass() {
         return beanClass;
+    }
+
+    public PropertyValues getPropertyValues() {
+        return propertyValues;
     }
 }
